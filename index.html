@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>اقامتگاه در رشت | رزرو مستقیم</title>
+<meta name="description" content="آپارتمان مبله در رشت برای اقامت کوتاه‌مدت. رزرو مستقیم با صاحب‌خانه.">
+<script>document.documentElement.className='js'</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#14302A;--moss:#2F5D4A;--mist:#E3EBE6;--paper:#F5F8F6;--lantern:#E8B93A;--ink:#10201A}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:'Vazirmatn',Tahoma,system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.9;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lantern);outline-offset:3px}
+.wrap{width:min(1100px,100% - 2.5rem);margin-inline:auto}
+
+/* ---------- hero: a fogged window in the rain. Wipe it with mouse or finger ---------- */
+.hero{position:relative;min-height:100svh;background:#0a1a16;color:#fff;display:flex;flex-direction:column;overflow:hidden;touch-action:pan-y}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+#fog{z-index:1;cursor:crosshair}
+nav{position:relative;z-index:2;padding:1.4rem 0;pointer-events:none}
+nav .brand{font-weight:800;font-size:1.15rem;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+.hero-body{position:relative;z-index:2;margin-block:auto;padding-block:3rem;pointer-events:none;will-change:transform}
+h1{font-weight:800;font-size:clamp(2.4rem,7vw,5.2rem);line-height:1.25;max-width:12em;text-shadow:0 4px 40px rgba(0,0,0,.45)}
+h1 span{display:block;opacity:0;transform:translateY(30px);filter:blur(10px);animation:up 1.2s cubic-bezier(.2,.7,.2,1) forwards}
+h1 span:nth-child(2){animation-delay:.4s}h1 span:nth-child(3){animation-delay:.8s}
+@keyframes up{to{opacity:1;transform:none;filter:none}}
+.lead{margin-top:1.5rem;max-width:28em;font-weight:300;font-size:1.15rem;text-shadow:0 2px 20px rgba(0,0,0,.5);opacity:0;animation:up 1.2s 1.3s forwards}
+.cta{margin-top:2rem;display:flex;flex-wrap:wrap;gap:1rem;opacity:0;animation:up 1.2s 1.6s forwards}
+.btn{pointer-events:auto;display:inline-block;padding:.8rem 1.8rem;border-radius:99px;font-weight:600;text-decoration:none;border:2px solid var(--lantern);transition:transform .25s,background .25s,color .25s}
+.btn.main{background:var(--lantern);color:var(--forest)}
+.btn.main:hover{background:#fff;border-color:#fff;transform:translateY(-3px)}
+.btn.ghost{color:#fff;border-color:rgba(255,255,255,.6)}
+.btn.ghost:hover{background:rgba(255,255,255,.14);transform:translateY(-3px)}
+.hint{position:absolute;z-index:2;bottom:1.6rem;inset-inline:0;text-align:center;font-weight:300;font-size:.95rem;letter-spacing:.02em;pointer-events:none;opacity:0;animation:hint 4s 3.2s ease-in-out infinite;transition:opacity .6s}
+.hint.gone{animation:none;opacity:0!important}
+@keyframes hint{0%,100%{opacity:0}50%{opacity:.85}}
+
+/* ---------- sections ---------- */
+section{padding-block:clamp(4rem,9vw,7rem)}
+h2{font-weight:800;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.5;color:var(--forest);margin-bottom:1rem}
+.sub{max-width:34em;color:#3d5149}
+
+/* word-by-word rise for headings */
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.2em;margin-bottom:-.2em}
+.split .w>span{display:inline-block;transform:translateY(115%);transition:transform 1s cubic-bezier(.2,.7,.2,1) calc(var(--i)*80ms)}
+.split.in .w>span{transform:none}
+/* wipe reveal, like a hand across glass (starts at the right edge) */
+.rv{transition:clip-path 1.2s cubic-bezier(.2,.7,.2,1) calc(var(--d,0)*100ms)}
+.js .rv{clip-path:inset(-20px -20px -20px 120%)}
+.js .rv.in{clip-path:inset(-20px)}
+
+.gallery{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:clamp(130px,19vw,230px);gap:.8rem;margin-top:2.5rem}
+.tile{position:relative;border-radius:20px;overflow:hidden;background:linear-gradient(140deg,var(--moss),var(--forest));transition:clip-path 1.3s cubic-bezier(.2,.7,.2,1) calc(var(--d,0)*120ms)}
+.js .tile{clip-path:inset(100% 0 0 0 round 20px)}
+.js .tile.in{clip-path:inset(0 0 0 0 round 20px)}
+.tile:nth-child(1){grid-column:span 4;grid-row:span 2}
+.tile:nth-child(2),.tile:nth-child(3){grid-column:span 2}
+.tile:nth-child(4),.tile:nth-child(5){grid-column:span 3}
+.tile:nth-child(2){background:linear-gradient(140deg,#4b7a63,var(--moss))}
+.tile:nth-child(4){background:linear-gradient(140deg,#6b8f7c,#2F5D4A)}
+.tile img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;display:block;will-change:transform}
+.tile.in img{animation:zoomout 2s cubic-bezier(.2,.7,.2,1) both}
+@keyframes zoomout{from{scale:1.35}to{scale:1}}
+
+.mq-wrap{overflow:hidden;padding-block:clamp(2rem,5vw,4rem)}
+.mq{white-space:nowrap;font-weight:800;font-size:clamp(5rem,17vw,15rem);line-height:1.2;color:transparent;-webkit-text-stroke:2px var(--moss);transform:translateX(var(--mx,0px));will-change:transform;width:max-content}
+.mq i{display:inline-block;width:.14em;height:.14em;margin-inline:.35em;border-radius:50%;background:var(--lantern);vertical-align:middle}
+
+.band{background:var(--mist)}
+.amen{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0 2.5rem;margin-top:2rem;list-style:none;padding:0}
+.amen li{position:relative;padding-block:1rem;font-size:1.1rem}
+.amen li::after{content:"";position:absolute;inset-inline:0;bottom:0;height:1.5px;background:var(--moss);transform:scaleX(0);transform-origin:right;transition:transform 1.2s cubic-bezier(.2,.7,.2,1) calc(var(--d,0)*100ms + .3s)}
+.amen li.in::after{transform:none}
+
+/* ---------- journey: eight stops, from your door outwards ---------- */
+@property --a{syntax:'<color>';inherits:true;initial-value:#E8B93A}
+.trip{--a:#E8B93A;color:#fff;background:radial-gradient(70% 45% at 85% 6%,color-mix(in srgb,var(--a) 24%,transparent),transparent 70%),#0b1c18;transition:--a 1.4s ease;padding-bottom:clamp(3rem,6vw,5rem)}
+.trip h2{color:#fff}.trip .sub{color:#b9d0c4}
+.stops{--pad:3.2rem;--lx:.9rem;position:relative;padding-inline-start:var(--pad);margin-top:2.5rem}
+.hud{position:sticky;top:0;z-index:6;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 1rem;margin-inline-start:calc(var(--pad)*-1);background:rgba(11,28,24,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.12);border-radius:0 0 18px 18px}
+.hud small{display:block;font-size:.8rem;color:#9fc0b1;line-height:1.4}
+.hud b{font-size:clamp(1.1rem,3.2vw,1.9rem);font-weight:800;color:var(--a);line-height:1.4}
+.dots{display:flex;gap:.55rem}
+.dots button{position:relative;width:.75rem;height:.75rem;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:transform .3s,background .3s}
+.dots button::after{content:"";position:absolute;inset:-.5rem}
+.dots button.past{background:rgba(255,255,255,.7)}
+.dots button.on{background:var(--a);transform:scale(1.6)}
+.line{position:absolute;inset-inline-start:var(--lx);top:4.5rem;bottom:0;width:2px;background:rgba(255,255,255,.14)}
+.line .fill{position:absolute;inset:0;background:var(--a);transform:scaleY(var(--p,0));transform-origin:top}
+.line .bead{position:absolute;left:50%;top:calc(var(--p,0)*100%);width:14px;height:14px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);box-shadow:0 0 0 6px color-mix(in srgb,var(--a) 40%,transparent),0 0 32px 8px var(--a)}
+.stop{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;min-height:min(82vh,660px);padding-block:3rem}
+article.stop:nth-of-type(even) .ph{order:-1}
+.stop::before{content:"";position:absolute;top:50%;inset-inline-start:calc(var(--lx) - var(--pad) - 7px);width:16px;height:16px;border-radius:50%;background:#0b1c18;border:2px solid rgba(255,255,255,.35);transition:background .6s,box-shadow .6s,border-color .6s;z-index:2}
+.stop.in::before{background:var(--c);border-color:var(--c);box-shadow:0 0 28px 4px var(--c)}
+.num{position:absolute;inset-inline-end:0;top:50%;z-index:0;font-size:clamp(9rem,26vw,20rem);font-weight:800;line-height:1;color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb,var(--c) 45%,transparent);opacity:.5;transform:translateY(calc(-50% + var(--ny,0px)));pointer-events:none}
+.st-text{position:relative;z-index:1}
+.stop h3{font-size:clamp(1.9rem,4.8vw,3.4rem);line-height:1.4;font-weight:800}
+.stop p.rv{margin-top:1rem;color:#cfe2d8;max-width:30em}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem}
+.tags span{border:1.5px solid var(--c);color:var(--c);border-radius:99px;padding:.1rem .9rem;font-size:.9rem}
+.tags span.when{background:var(--c);color:#0b1c18;font-weight:600}
+.links{margin-top:1rem;display:flex;gap:1.2rem;flex-wrap:wrap}
+.links a{color:#fff;text-decoration:none;border-bottom:1.5px solid var(--c);padding-bottom:.1rem;transition:color .2s}
+.links a:hover{color:var(--c)}
+.ph{position:relative;z-index:1;margin:0;aspect-ratio:4/3;border-radius:28px;overflow:hidden;background:radial-gradient(circle at 28% 22%,color-mix(in srgb,var(--c) 65%,#0b1c18),transparent 62%),linear-gradient(150deg,#1d4a3c,#0d2620);transition:clip-path 1.6s cubic-bezier(.2,.7,.2,1)}
+.js .ph{clip-path:circle(0% at 50% 50%)}
+.js .ph.in{clip-path:circle(80% at 50% 50%)}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph.in img{animation:zoomout 2.2s cubic-bezier(.2,.7,.2,1) both}
+.trip-end{margin-top:2rem;text-align:center}
+.trip-end p{font-size:clamp(1.3rem,3vw,2rem);font-weight:800;max-width:20em;margin:0 auto 1.5rem;line-height:1.6}
+.trip-end small{display:block;margin-top:1.5rem;color:#9fc0b1}
+@media(max-width:760px){.stops{--pad:2.2rem;--lx:.5rem}.stop{grid-template-columns:1fr;gap:1.5rem;min-height:0;padding-block:2.5rem}article.stop:nth-of-type(even) .ph{order:0}.num{top:1rem;transform:none;font-size:7rem}.dots{gap:.4rem}.dots button{width:.6rem;height:.6rem}}
+
+/* ---------- booking (dark) ---------- */
+#book{background:var(--forest);color:#fff;position:relative}
+#book h2{color:#fff}#book .sub{color:#b9d0c4}
+form{margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:760px}
+form .full{grid-column:1/-1}
+label{display:block;font-size:.9rem;font-weight:600;margin-bottom:.2rem;color:#d3e4da}
+input,textarea,.datebtn{width:100%;padding:.8rem 1rem;border:1.5px solid rgba(255,255,255,.3);border-radius:14px;font:inherit;background:rgba(255,255,255,.07);color:#fff;transition:border-color .2s,background .2s}
+input:focus,textarea:focus,.datebtn:focus,.datebtn.open{border-color:var(--lantern);background:rgba(255,255,255,.12)}
+.datebtn{text-align:start;cursor:pointer}
+.datebtn.empty{color:#9fb8ab}
+button.send{grid-column:1/-1;justify-self:start;cursor:pointer;background:var(--lantern);color:var(--forest);border:0;padding:.9rem 2.6rem;border-radius:99px;font:inherit;font-weight:800;transition:transform .25s,background .25s}
+button.send:hover{background:#fff;transform:translateY(-3px)}
+.note{grid-column:1/-1;font-size:.9rem;color:#a9c4b6}
+.ok{background:#d6ead9;color:var(--forest);border-radius:14px;padding:1rem 1.2rem;max-width:760px;margin-top:1.5rem}
+.contact{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.5rem}
+.contact a{border:1.5px solid rgba(255,255,255,.5);padding:.6rem 1.5rem;border-radius:99px;text-decoration:none;font-weight:600;transition:background .25s,color .25s,transform .25s}
+.contact a:hover{background:#fff;color:var(--forest);transform:translateY(-3px)}
+
+/* Persian calendar dropdown */
+.dwrap{position:relative}
+.cal{position:absolute;z-index:30;top:calc(100% + .6rem);inset-inline-start:0;background:#fff;color:var(--ink);border-radius:20px;padding:1.2rem;box-shadow:0 30px 80px rgba(0,0,0,.45);width:min(680px,calc(100vw - 2.5rem));transform-origin:top;animation:pop .25s ease-out}
+.cal[hidden]{display:none}
+@keyframes pop{from{opacity:0;transform:scale(.97) translateY(-6px)}}
+.cal-top{display:flex;justify-content:space-between;margin-bottom:.4rem}
+.cal-top button{width:2.4rem;height:2.4rem;border-radius:50%;border:0;background:var(--mist);cursor:pointer;font-size:1.3rem;line-height:1;color:var(--forest)}
+.cal-top button:disabled{opacity:.3;cursor:default}
+.months{display:flex;gap:2rem;flex-wrap:wrap}
+.m{flex:1;min-width:230px}
+.m h4{text-align:center;font-weight:800;color:var(--forest);margin-bottom:.4rem}
+.g{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.g b{font-size:.8rem;color:#6a7f74;font-weight:600}
+.g button{aspect-ratio:1;border:0;background:none;border-radius:50%;font:inherit;font-size:.95rem;cursor:pointer;color:var(--ink)}
+.g button:hover:not(:disabled){background:var(--mist)}
+.g button:disabled{opacity:.28;cursor:default}
+.g button.rng,.g button.pre{background:var(--mist);border-radius:0}
+.g button.sel{background:var(--forest);color:#fff;border-radius:50%}
+.cal-foot{margin-top:.8rem;font-size:.9rem;color:#4d6358}
+
+.mqfoot{background:var(--forest)}
+footer{background:#0d211c;color:#b9d0c4;padding-block:2.2rem;font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer a{text-decoration:none;border-bottom:1px solid currentColor}
+@media(max-width:640px){form{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}.tile:nth-child(n){grid-column:span 1;grid-row:auto}.tile:nth-child(1){grid-column:span 2}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}h1 span,.lead,.cta{opacity:1;transform:none;filter:none}.rv,.tile,.ph{clip-path:none!important}.split .w>span{transform:none!important}.amen li::after{transform:none!important}#fog,.hint{display:none}}
+</style>
+</head>
+<body>
+
+<header class="hero" id="hero">
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <canvas id="fog" aria-hidden="true"></canvas>
+  <div class="wrap"><nav><div class="brand">اقامتگاه رشت</div></nav></div>
+  <div class="wrap hero-body" id="hb">
+    <h1>
+      <span>بیرون باران است.</span>
+      <span>همه‌جا سبز.</span>
+      <span>و خانه‌ای گرم منتظر شماست.</span>
+    </h1>
+    <p class="lead">آپارتمان کاملاً مبله در رشت برای اقامت کوتاه‌مدت. رزرو مستقیم با صاحب‌خانه.</p>
+    <div class="cta">
+      <a class="btn main" href="#book">درخواست رزرو</a>
+      <!-- TODO: put your Jabama listing link here -->
+      <a class="btn ghost" href="https://www.jabama.com/" target="_blank" rel="noopener">ما را در جاباما ببینید</a>
+    </div>
+  </div>
+  <div class="hint" id="hint">شیشه را با ماوس یا انگشت پاک کنید</div>
+</header>
+
+<main>
+<section id="photos">
+  <div class="wrap">
+    <h2 class="split">آپارتمان را ببینید</h2>
+    <p class="sub rv">عکس‌های خود را با نام 1.jpg تا 5.jpg در پوشه images بگذارید تا خودکار اینجا نمایش داده شوند.</p>
+    <div class="gallery">
+      <div class="tile"><img src="images/1.jpg" alt="پذیرایی" onerror="this.remove()"></div>
+      <div class="tile"><img src="images/2.jpg" alt="اتاق خواب" onerror="this.remove()"></div>
+      <div class="tile"><img src="images/3.jpg" alt="آشپزخانه" onerror="this.remove()"></div>
+      <div class="tile"><img src="images/4.jpg" alt="بالکن" onerror="this.remove()"></div>
+      <div class="tile"><img src="images/5.jpg" alt="سرویس بهداشتی" onerror="this.remove()"></div>
+    </div>
+  </div>
+</section>
+
+<div class="mq-wrap" aria-hidden="true">
+  <div class="mq" id="mq">باران<i></i>چای<i></i>برنج<i></i>جنگل<i></i>دریا<i></i>باران<i></i>چای<i></i>برنج<i></i>جنگل<i></i>دریا</div>
+</div>
+
+<section class="band" id="amenities">
+  <div class="wrap">
+    <h2 class="split">امکانات</h2>
+    <ul class="amen">
+      <!-- TODO: edit this list to match your apartment -->
+      <li class="rv">اینترنت پرسرعت</li>
+      <li class="rv">پارکینگ اختصاصی</li>
+      <li class="rv">آشپزخانه کامل</li>
+      <li class="rv">سرمایش و گرمایش</li>
+      <li class="rv">ملحفه و حوله تمیز</li>
+      <li class="rv">تحویل بدون معطلی</li>
+    </ul>
+  </div>
+</section>
+
+<section class="trip" id="trip">
+  <div class="wrap">
+    <h2 class="split">از همین آپارتمان، هشت سفر</h2>
+    <p class="sub rv">آپارتمان درست کنار میدان شهرداری است. پیاده تا قلب رشت، و با خودرو تا جنگل، تالاب، کوهستان و دریا.</p>
+    <div class="stops" id="stops">
+      <div class="hud">
+        <div><small>فاصله از آپارتمان شما</small><b id="hn">پیاده، چند قدم</b></div>
+        <div class="dots" id="dots"></div>
+      </div>
+      <div class="line" aria-hidden="true"><i class="fill"></i><i class="bead"></i></div>
+      <!-- the eight stops are generated by the SPOTS list in the script at the bottom -->
+    </div>
+    <div class="trip-end">
+      <p class="rv">همه این سفرها از یک نقطه شروع می‌شود: آپارتمانی در قلب رشت.</p>
+      <a class="btn main" href="#book">درخواست رزرو</a>
+      <small>فاصله‌ها و زمان‌ها تقریبی است. ساعت کار هر مکان را پیش از رفتن بررسی کنید.</small>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <h2 class="split">تاریخ اقامت را درخواست کنید</h2>
+    <p class="sub rv">تاریخ‌ها را بفرستید؛ معمولاً ظرف چند ساعت موجود بودن را تأیید می‌کنم.</p>
+    <div id="ok" class="ok" hidden>ممنون. درخواست شما ارسال شد و به‌زودی پاسخ می‌دهم.</div>
+    <form method="post" action="send.php" id="f" novalidate>
+      <div><label for="n">نام</label><input id="n" name="name" required autocomplete="name"></div>
+      <div><label for="p">شماره تماس</label><input id="p" name="phone" type="tel" required autocomplete="tel" dir="ltr" style="text-align:right"></div>
+      <div class="full dwrap">
+        <label for="dates">تاریخ ورود و خروج</label>
+        <button type="button" id="dates" class="datebtn empty" aria-haspopup="dialog" aria-expanded="false">برای انتخاب تاریخ کلیک کنید</button>
+        <input type="hidden" name="checkin" id="ci"><input type="hidden" name="checkout" id="co"><input type="hidden" name="nights" id="nt">
+        <div class="cal" id="cal" role="dialog" aria-label="انتخاب تاریخ" hidden></div>
+      </div>
+      <div><label for="g">تعداد مهمان</label><input id="g" name="guests" type="number" min="1" max="10" value="2"></div>
+      <div class="full"><label for="m">پیام (اختیاری)</label><textarea id="m" name="message" rows="4"></textarea></div>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none">
+      <button class="send" type="submit">ارسال درخواست</button>
+      <p class="note">پرداختی آنلاین انجام نمی‌شود. ابتدا تاریخ‌ها را تأیید می‌کنم، سپس پرداخت را هماهنگ می‌کنیم.</p>
+    </form>
+    <div class="contact">
+      <!-- TODO: replace the number (international format, no +), Telegram and Instagram usernames -->
+      <a href="tel:+989120000000" dir="ltr">0912 000 0000</a>
+      <a href="https://wa.me/989120000000" target="_blank" rel="noopener">واتساپ</a>
+      <a href="https://t.me/your_username" target="_blank" rel="noopener">تلگرام</a>
+      <a href="https://instagram.com/your_username" target="_blank" rel="noopener">اینستاگرام</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>رشت، گیلان، ایران</div>
+    <div><a href="https://instagram.com/your_username" target="_blank" rel="noopener">اینستاگرام</a></div>
+  </div>
+</footer>
+
+<script>
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const P=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+
+/* ================= HERO: scene behind, fog in front ================= */
+const hero=document.getElementById('hero'),sc=document.getElementById('scene'),fg=document.getElementById('fog');
+const sx=sc.getContext('2d'),fx=fg.getContext('2d');
+let W=0,H=0,dpr=1,lights=[],streaks=[],drops=[],vis=true,t=0,last=null,wiped=false;
+const mouse={x:.5,y:.5};
+const COLS=['255,196,80','255,160,70','255,226,150','120,230,170','90,205,205','255,196,80'];
+
+function fogFill(a){
+  const g=fx.createLinearGradient(0,0,W,H);
+  g.addColorStop(0,'rgba(104,148,128,'+a+')');g.addColorStop(1,'rgba(40,84,70,'+a+')');
+  fx.globalCompositeOperation='source-over';fx.fillStyle=g;fx.fillRect(0,0,W,H);
+}
+function fit(){
+  const r=hero.getBoundingClientRect();
+  if(W&&Math.abs(r.width-W)<1&&Math.abs(r.height-H)<140)return;
+  W=r.width;H=r.height;dpr=Math.min(devicePixelRatio||1,1.5);
+  [sc,fg].forEach(c=>{c.width=W*dpr;c.height=H*dpr});
+  sx.setTransform(dpr,0,0,dpr,0,0);fx.setTransform(dpr,0,0,dpr,0,0);
+  const small=W<700;
+  lights=Array.from({length:small?22:40},()=>({x:Math.random()*W,y:Math.random()*H*.85,r:18+Math.random()*(small?50:85),vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.1,c:COLS[Math.random()*COLS.length|0],a:.3+Math.random()*.4,z:.2+Math.random()}));
+  streaks=Array.from({length:Math.round(W/10)},()=>({x:Math.random()*W,y:Math.random()*H,l:12+Math.random()*20,s:7+Math.random()*9}));
+  if(!reduce)fogFill(.88);
+  drawScene();
+}
+function drawScene(){
+  const g=sx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,'#0a1a16');g.addColorStop(.6,'#14382e');g.addColorStop(1,'#07120f');
+  sx.globalCompositeOperation='source-over';sx.fillStyle=g;sx.fillRect(0,0,W,H);
+  sx.globalCompositeOperation='lighter';
+  for(const l of lights){
+    l.x+=l.vx;l.y+=l.vy;
+    if(l.x<-120)l.x=W+120;if(l.x>W+120)l.x=-120;if(l.y<0||l.y>H*.9)l.vy*=-1;
+    const px=l.x+(mouse.x-.5)*70*l.z,py=l.y+(mouse.y-.5)*45*l.z;
+    const rg=sx.createRadialGradient(px,py,0,px,py,l.r);
+    rg.addColorStop(0,'rgba('+l.c+','+l.a+')');rg.addColorStop(.72,'rgba('+l.c+','+l.a*.55+')');rg.addColorStop(1,'rgba('+l.c+',0)');
+    sx.fillStyle=rg;sx.beginPath();sx.arc(px,py,l.r,0,6.283);sx.fill();
+  }
+  sx.globalCompositeOperation='source-over';
+  // three layers of misty forest
+  const cols=['#0f2c25','#0a1d1a','#050e0c'];
+  for(let k=0;k<3;k++){
+    sx.fillStyle=cols[k];sx.beginPath();sx.moveTo(0,H);
+    for(let x=0;x<=W+14;x+=14){
+      const y=H*(1-.12-k*.06)-(28+k*14)*(Math.abs(Math.sin(x*(.012+k*.004)+k*2+t*.0004*(k+1)))*.7+Math.abs(Math.sin(x*.05+k))*.3);
+      sx.lineTo(x,y);
+    }
+    sx.lineTo(W,H);sx.fill();
+  }
+  // rain outside
+  sx.strokeStyle='rgba(205,232,222,.28)';sx.lineWidth=1;sx.beginPath();
+  for(const p of streaks){sx.moveTo(p.x,p.y);sx.lineTo(p.x-p.l*.14,p.y+p.l);p.y+=p.s;p.x-=p.s*.14;if(p.y>H){p.y=-30;p.x=Math.random()*(W+60)}}
+  sx.stroke();
+}
+function erase(x1,y1,x2,y2,r){
+  fx.globalCompositeOperation='destination-out';fx.lineCap='round';
+  for(const [k,a] of [[2,.16],[1.5,.34],[1,.9]]){
+    fx.strokeStyle='rgba(0,0,0,'+a+')';fx.lineWidth=r*k;fx.beginPath();fx.moveTo(x1,y1);fx.lineTo(x2,y2);fx.stroke();
+  }
+}
+function spawnDrop(){drops.push({x:Math.random()*W,y:Math.random()*H*.55,r:2.4+Math.random()*4.2,v:0,w:Math.random()*50})}
+function updateFog(){
+  if(t%5===0)fogFill(.045);                         // fog slowly regrows
+  if(t>20&&t%12===0&&drops.length<(W<700?16:32))spawnDrop();
+  for(const d of drops){
+    if(d.w>0){d.w--;erase(d.x,d.y,d.x,d.y,d.r*2);continue}
+    d.v=Math.min(d.v+.13,5.5);
+    if(Math.random()<.018){d.v=0;d.w=20+Math.random()*70}
+    const ny=d.y+d.v;erase(d.x,d.y,d.x+(Math.random()-.5)*.5,ny,d.r*1.2);erase(d.x,ny,d.x,ny,d.r*2);d.y=ny;
+  }
+  drops=drops.filter(d=>d.y<H+30);
+  // opening gesture: one big sweep across the glass, right to left
+  if(t>90&&t<210&&!wiped){
+    const p=(t-90)/120,x=W*(.96-.92*p),y=H*(.5+.1*Math.sin(p*6.5)),px=W*(.96-.92*Math.max(0,p-.012)),py=H*(.5+.1*Math.sin(Math.max(0,p-.012)*6.5));
+    erase(px,py,x,y,Math.min(W,H)*.1);
+  }
+}
+function loop(){
+  t++;
+  if(vis){drawScene();updateFog()}
+  requestAnimationFrame(loop);
+}
+fit();addEventListener('resize',fit);
+if(!reduce){
+  new IntersectionObserver(e=>{vis=e[0].isIntersecting}).observe(hero);
+  hero.addEventListener('pointermove',e=>{
+    const r=hero.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+    mouse.x=x/W;mouse.y=y/H;
+    erase(last?last.x:x,last?last.y:y,x,y,e.pointerType==='touch'?36:46);last={x,y};
+    if(t>60){wiped=true;document.getElementById('hint').classList.add('gone')}
+  });
+  hero.addEventListener('pointerleave',()=>last=null);
+  requestAnimationFrame(loop);
+}
+
+/* ================= sightseeing journey ================= */
+// Edit this list to change the stops. "min" = approx. minutes by car (leave out for walking distance).
+const SPOTS=[
+ {t:'میدان شهرداری',d:'نماد رشت: ساختمان شهرداری و برج ساعت در یک پیاده‌راه. از آپارتمان چند قدم تا اینجاست؛ برای قهوه صبح و قدم‌زدن شبانه.',tags:['تاریخ','پیاده‌روی'],when:'کنار آپارتمان',hud:'پیاده، چند قدم',c:'#E8B93A',q:'میدان شهرداری رشت'},
+ {t:'بازار بزرگ رشت',d:'از میدان شهرداری وارد بازار می‌شوید: میدان بزرگ، میدان کوچک، چهارسوق‌ها و کاروانسراها. راسته ماهی‌فروشان پرجنب‌وجوش‌ترین بخش آن است؛ برای سوغات و محصولات محلی بهترین جاست.',tags:['خرید','سوغات'],when:'کنار میدان شهرداری',hud:'پیاده',c:'#E98A4E',q:'بازار بزرگ رشت'},
+ {t:'سفره گیلانی',d:'میرزاقاسمی، باقالی قاتق، ترش‌تره، مرغ ترش، کته‌کباب و شامی گیلانی. رشت را شهر خلاق خوراک‌شناسی می‌دانند و اطراف میدان شهرداری پر از رستوران محلی است؛ هر وعده یک غذای تازه امتحان کنید.',tags:['خوراک','غذای محلی'],when:'در همین محله',hud:'پیاده',c:'#D9695A',q:'رستوران محلی میدان شهرداری رشت'},
+ {t:'موزه رشت',d:'خانه قدیمی میرزا حسین‌خان کسمایی که حالا موزه مردم‌شناسی و باستان‌شناسی است: صحنه‌های بازسازی‌شده زندگی گیلانی و یافته‌های باستانی گیلان، از جمله مارلیک. بازدیدش کمتر از یک ساعت وقت می‌گیرد.',tags:['موزه','تاریخ'],when:'داخل شهر',hud:'داخل شهر',c:'#C9A76A',q:'موزه رشت خیابان طالقانی'},
+ {t:'اکوموزه گیلان در جنگل سراوان',d:'نخستین اکوموزه ایران، در پارک جنگلی سراوان: خانه‌های روستایی مناطق مختلف گیلان در حدود ۲۶۰ هکتار جنگل. هم طبیعت است و هم فرهنگ؛ با کفش راحت بروید.',tags:['جنگل','موزه'],when:'حدود ۲۰ دقیقه با خودرو',min:20,c:'#6FCF97',url:'https://www.gecomuseum.ir/fa/default.aspx',q:'موزه میراث روستایی گیلان'},
+ {t:'انزلی: تالاب و دریای خزر',d:'حدود ۴۰ کیلومتر تا بندر انزلی. تالاب بین‌المللی انزلی با قایق‌سواری و پرندگان مهاجر، و ساحل دریای خزر با خط ساحلی ۴۲ کیلومتری. یک روز کامل بگذارید و غروب را کنار دریا ببینید.',tags:['دریا','تالاب'],when:'حدود ۶۰ دقیقه با خودرو',min:60,c:'#47C1BF',q:'تالاب انزلی'},
+ {t:'قلعه رودخان',d:'قلعه‌ای تاریخی در دل جنگل، نزدیک فومن. رسیدن به آن پیاده‌روی میان درختان دارد؛ مناسب کسانی که جنگل و تاریخ را با هم دوست دارند.',tags:['تاریخ','جنگل'],when:'حدود ۷۵ دقیقه با خودرو',min:75,c:'#9BC96A',q:'قلعه رودخان'},
+ {t:'ماسوله',d:'شهر پلکانی در ارتفاع حدود ۱۰۵۰ متری، حدود ۶۰ کیلومتر از رشت. خودرو وارد کوچه‌هایش نمی‌شود و پاییز یکی از دیدنی‌ترین فصل‌هایش است. صبح زود راه بیفتید.',tags:['کوهستان','روستای پلکانی'],when:'حدود ۹۰ دقیقه با خودرو',min:90,c:'#7FB5E6',q:'ماسوله'}
+];
+(function(){
+  const trip=document.getElementById('trip'),host=document.getElementById('stops'),hn=document.getElementById('hn'),dots=document.getElementById('dots');
+  host.insertAdjacentHTML('beforeend',SPOTS.map((s,i)=>
+    '<article class="stop" style="--c:'+s.c+'"><span class="num" aria-hidden="true">'+P(i+1)+'</span>'+
+    '<div class="st-text"><h3 class="split">'+s.t+'</h3><p class="rv">'+s.d+'</p>'+
+    '<div class="tags"><span class="when">'+s.when+'</span>'+s.tags.map(x=>'<span>'+x+'</span>').join('')+'</div>'+
+    '<p class="links"><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(s.q)+'" target="_blank" rel="noopener">مسیر روی نقشه</a>'+(s.url?'<a href="'+s.url+'" target="_blank" rel="noopener">وب‌سایت</a>':'')+'</p></div>'+
+    '<figure class="ph"><img src="images/spots/'+(i+1)+'.jpg" alt="'+s.t+'" onerror="this.remove()"></figure></article>').join(''));
+  const arts=[...host.querySelectorAll('.stop')];
+  dots.innerHTML=SPOTS.map(s=>'<button type="button" aria-label="'+s.t+'"></button>').join('');
+  const db=[...dots.children];
+  db.forEach((b,i)=>b.addEventListener('click',()=>arts[i].scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})));
+
+  // distance counter in the sticky bar
+  let cur=0,raf=0;
+  function hud(s){
+    cancelAnimationFrame(raf);
+    if(!s.min){hn.textContent=s.hud;cur=0;return}
+    const from=cur,to=s.min,t0=performance.now(),txt=v=>'حدود '+P(v)+' دقیقه با خودرو';
+    if(reduce){hn.textContent=txt(to);cur=to;return}
+    (function f(now){
+      const k=Math.min(1,(now-t0)/900),v=Math.round(from+(to-from)*(1-Math.pow(1-k,3)));
+      hn.textContent=txt(v);cur=v;if(k<1)raf=requestAnimationFrame(f);
+    })(t0);
+  }
+  // active stop: changes accent colour, counter and dots
+  let act=-1;
+  const so=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const i=arts.indexOf(e.target);if(i===act)return;act=i;
+    trip.style.setProperty('--a',SPOTS[i].c);hud(SPOTS[i]);
+    db.forEach((b,j)=>{b.classList.toggle('on',j===i);b.classList.toggle('past',j<i)});
+  }),{rootMargin:'-45% 0px -45% 0px'});
+  arts.forEach(a=>so.observe(a));
+
+  // route line fills while scrolling; big numerals drift
+  let tk=false;
+  function prog(){
+    tk=false;const r=host.getBoundingClientRect(),vh=innerHeight;
+    host.style.setProperty('--p',Math.min(1,Math.max(0,(vh*.5-r.top-70)/(r.height-70))));
+    if(reduce)return;
+    for(const a of arts){const b=a.getBoundingClientRect();a.style.setProperty('--ny',((b.top+b.height/2-vh/2)*-.14)+'px')}
+  }
+  addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(prog)}},{passive:true});
+  prog();
+})();
+
+/* ================= scroll effects ================= */
+document.querySelectorAll('.split').forEach(h=>{
+  const words=h.textContent.trim().split(/\s+/);
+  h.innerHTML=words.map((w,i)=>'<span class="w"><span style="--i:'+i+'">'+w+'</span></span>').join(' ');
+});
+document.querySelectorAll('.amen li,.tile').forEach((el,i)=>el.style.setProperty('--d',i%6));
+// reveal by position (no IntersectionObserver, so it also works on odd Android browsers)
+let pend=[...document.querySelectorAll('.split,.rv,.tile,.ph,.stop')];
+function reveal(){
+  const vh=innerHeight||document.documentElement.clientHeight;
+  pend=pend.filter(el=>{const r=el.getBoundingClientRect();if(r.bottom>0&&r.top<vh*.92){el.classList.add('in');return false}return true});
+}
+['scroll','resize','load','orientationchange'].forEach(ev=>addEventListener(ev,reveal,{passive:true}));
+reveal();
+const rvt=setInterval(()=>{reveal();if(!pend.length)clearInterval(rvt)},600);
+
+const hb=document.getElementById('hb'),mq=document.getElementById('mq'),imgs=[...document.querySelectorAll('.tile img')];
+let tick=false;
+function onScroll(){
+  tick=false;const y=scrollY,vh=innerHeight;
+  if(y<vh*1.2&&!reduce){hb.style.transform='translateY('+y*.28+'px)';hb.style.opacity=Math.max(0,1-y/(vh*.75))}
+  if(!reduce){
+    const r=mq.parentElement.getBoundingClientRect();
+    mq.style.setProperty('--mx',Math.max(0,(vh-r.top))*.45+'px');
+    for(const i of imgs){const b=i.parentElement.getBoundingClientRect();i.style.transform='translateY('+((b.top+b.height/2-vh/2)/vh*-45)+'px)'}
+  }
+}
+addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});
+onScroll();
+
+/* ================= Persian (Jalali) calendar dropdown ================= */
+const jf=new Intl.DateTimeFormat('en-US-u-ca-persian-nu-latn',{year:'numeric',month:'numeric',day:'numeric'});
+const mf=new Intl.DateTimeFormat('fa-IR-u-ca-persian',{month:'long'});
+function jp(d){const o={};jf.formatToParts(d).forEach(p=>{if(p.type==='year'||p.type==='month'||p.type==='day')o[p.type]=+p.value});return o}
+const noon=d=>new Date(d.getFullYear(),d.getMonth(),d.getDate(),12);
+const addD=(d,n)=>new Date(d.getFullYear(),d.getMonth(),d.getDate()+n,12);
+const first=d=>addD(d,-(jp(d).day-1));
+const nextM=v=>{let x=addD(v,27);while(jp(x).day!==1)x=addD(x,1);return x};
+const prevM=v=>first(addD(v,-1));
+const mlen=v=>Math.round((nextM(v)-v)/864e5);
+const today=noon(new Date());
+let view=first(today),start=null,end=null;
+const cal=document.getElementById('cal'),btn=document.getElementById('dates');
+const label=d=>P(jp(d).day)+' '+mf.format(d);
+const iso=d=>{const j=jp(d);return j.year+'/'+String(j.month).padStart(2,'0')+'/'+String(j.day).padStart(2,'0')};
+
+function render(){
+  const n=innerWidth>760?2:1;let html='<div class="cal-top"><button type="button" id="pv" aria-label="ماه قبل"'+(view<=first(today)?' disabled':'')+'>›</button><button type="button" id="nx" aria-label="ماه بعد">‹</button></div><div class="months">';
+  let v=view;
+  for(let k=0;k<n;k++){
+    const off=(v.getDay()+1)%7,len=mlen(v);
+    html+='<div class="m"><h4>'+mf.format(v)+' '+P(jp(v).year)+'</h4><div class="g">'+['ش','ی','د','س','چ','پ','ج'].map(x=>'<b>'+x+'</b>').join('')+'<span></span>'.repeat(off);
+    for(let i=0;i<len;i++){
+      const d=addD(v,i),ts=d.getTime();
+      let c='';if(start&&ts===start)c='sel';else if(end&&ts===end)c='sel';else if(start&&end&&ts>start&&ts<end)c='rng';
+      html+='<button type="button" data-t="'+ts+'" class="'+c+'"'+(d<today?' disabled':'')+'>'+P(i+1)+'</button>';
+    }
+    html+='</div></div>';v=nextM(v);
+  }
+  html+='</div><div class="cal-foot">'+(start&&!end?'حالا تاریخ خروج را انتخاب کنید.':'ابتدا تاریخ ورود، سپس تاریخ خروج را انتخاب کنید.')+'</div>';
+  cal.innerHTML=html;
+}
+function setVals(){
+  const nights=Math.round((end-start)/864e5);
+  btn.textContent=label(new Date(start))+' تا '+label(new Date(end))+' ('+P(nights)+' شب)';btn.classList.remove('empty');
+  document.getElementById('ci').value=iso(new Date(start));document.getElementById('co').value=iso(new Date(end));document.getElementById('nt').value=nights;
+}
+function open(){render();cal.hidden=false;btn.classList.add('open');btn.setAttribute('aria-expanded','true')}
+function close(){cal.hidden=true;btn.classList.remove('open');btn.setAttribute('aria-expanded','false')}
+btn.addEventListener('click',()=>cal.hidden?open():close());
+cal.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.id==='pv'){view=prevM(view);render();return}
+  if(b.id==='nx'){view=nextM(view);render();return}
+  const ts=+b.dataset.t;if(!ts)return;
+  if(!start||end){start=ts;end=null;render()}
+  else if(ts>start){end=ts;setVals();render();setTimeout(close,350)}
+  else{start=ts;render()}
+});
+cal.addEventListener('mouseover',e=>{
+  const b=e.target.closest('button[data-t]');if(!b||!start||end)return;
+  const ts=+b.dataset.t;
+  cal.querySelectorAll('button[data-t]').forEach(x=>{const v=+x.dataset.t;x.classList.toggle('pre',v>start&&v<=ts&&!x.classList.contains('sel'))});
+});
+document.addEventListener('click',e=>{if(!cal.hidden&&!e.target.closest('.dwrap'))close()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+document.getElementById('f').addEventListener('submit',e=>{
+  if(!document.getElementById('ci').value){e.preventDefault();open();btn.focus();return}
+  if(!document.getElementById('n').value||!document.getElementById('p').value){e.preventDefault();(document.getElementById('n').value?document.getElementById('p'):document.getElementById('n')).focus()}
+});
+if(location.search.includes('sent=1')){const ok=document.getElementById('ok');ok.hidden=false;ok.scrollIntoView()}
+</script>
+</body>
+</html>
