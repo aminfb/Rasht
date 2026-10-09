@@ -504,6 +504,7 @@ function open(){render();cal.hidden=false;btn.classList.add('open');btn.setAttri
 function close(){cal.hidden=true;btn.classList.remove('open');btn.setAttribute('aria-expanded','false')}
 btn.addEventListener('click',()=>cal.hidden?open():close());
 cal.addEventListener('click',e=>{
+  e.stopPropagation(); // the clicked day is re-rendered, so don't let the outside-click handler see it
   const b=e.target.closest('button');if(!b)return;
   if(b.id==='pv'){view=prevM(view);render();return}
   if(b.id==='nx'){view=nextM(view);render();return}
